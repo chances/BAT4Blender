@@ -1,5 +1,7 @@
 # BAT4Blender
 
+For the end-user guide and quick reference, see the [BAT4Blender Documentation](docs/index.html).
+
 ## Installing the Add-on
 
 1. Download the [latest release](https://github.com/memo33/BAT4Blender/releases).
@@ -57,9 +59,9 @@ The Add-on panel is available under *Properties → Scene → BAT4Blender*.
 - *Preview*: After the preview render result is complete, make sure to select the *Composite* image (instead of *View Layer*) to see the result.
   (Otherwise, e.g. nightlighting might not be visible.)
 
-- Click "Render all zooms & rotations" to render images and export LODs. They are saved in your current working directory from which Blender was launched.
+- Click "Render all zooms & rotations" to render images and export LODs. They are saved beside the current `.blend` file. If the file has not been saved, outputs use Blender's working directory.
 
-## Batch processing
+## Batch Processing
 
 Example Python batch script:
 ```python

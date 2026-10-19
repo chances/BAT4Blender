@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "build": ".\\build.ps1",
+    "docs": "deno run -A npm:serve docs"
+  }
+}

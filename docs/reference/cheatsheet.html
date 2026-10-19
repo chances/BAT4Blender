@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reference Cheatsheet - BAT4Blender Docs</title>
+    <link rel="stylesheet" href="../lesson.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to reference</a>
+    <header>
+      <p class="eyebrow">
+        <span>BAT4Blender</span>
+        ·
+        <a href="../index.html">Documentation</a>
+      </p>
+      <h1>Cheatsheet</h1>
+      <p class="kicker">From Scene to Export</p>
+      <p class="lede">A compact checklist for rendering a SimCity 4 BAT from Blender.</p>
+    </header>
+    <main id="main">
+      <section aria-labelledby="before-title">
+        <h2 id="before-title">Before Rendering</h2>
+        <ol class="steps">
+          <li><div><h3>Save the Scene</h3><p>Exports are written beside the saved <code>.blend</code> file.</p></div></li>
+          <li><div><h3>Choose Cycles</h3><p>Use <em>Properties → Render → Render Engine → Cycles</em>.</p></div></li>
+          <li><div><h3>Set Up Lighting and Compositing</h3><p>In <em>Properties → Scene → BAT4Blender</em>, click <em>World</em>, then <em>Compositing</em>.</p></div></li>
+          <li><div><h3>Create LODs</h3><p>Click <em>Add</em> to create missing LOD meshes. After changing the model, choose a zoom and click <em>Fit Z…</em> to refit that LOD.</p></div></li>
+        </ol>
+      </section>
+      <section aria-labelledby="render-title">
+        <h2 id="render-title">Preview, Then Render</h2>
+        <ul>
+          <li>Set the selected <em>Zoom</em>, <em>Rotation</em>, and <em>Day/Night</em>, then click <em>Preview</em>.</li>
+          <li>In the Render Result, select <em>Composite</em> to see the compositor output.</li>
+          <li>Click <em>Render all zooms &amp; rotations</em>. The default Day-only selection produces five zoom levels across four rotations.</li>
+          <li>Generated OBJ, PNG, and XML files are placed beside the saved <code>.blend</code> file.</li>
+        </ul>
+      </section>
+      <section aria-labelledby="optional-title">
+        <h2 id="optional-title">Optional Tools</h2>
+        <ul>
+          <li><strong>Super-Sampling:</strong> Enabled by default. It renders at 2× resolution and downsamples. Install ImageMagick or disable this option.</li>
+          <li><strong>Post-Processing:</strong> Off by default. Enable it and set the <code>fshgen</code> executable path to create an <code>.SC4Model</code>.</li>
+          <li><strong>Day/Night collections:</strong> Objects in collections named <code>Day</code> or <code>Night</code> can be shown or hidden automatically for those passes.</li>
+        </ul>
+      </section>
+      <p class="callout"><strong>Before Setup:</strong> Save a copy of the scene. BAT4Blender adds a helper collection, LOD meshes, and a camera.</p>
+      <footer>
+        <p>Read <a href="../getting-started.html">Getting Started</a> for complete instructions.</p>
+      </footer>
+    </main>
+  </body>
+</html>

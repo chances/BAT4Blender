@@ -1,0 +1,266 @@
+:root {
+  color-scheme: light dark;
+  --paper: #aebfbd;
+  --shell: #c5d5d2;
+  --ink: #253756;
+  --muted: #40536e;
+  --heading: #39496c;
+  --accent: #174f8a;
+  --line: #5c7583;
+  --panel: #dce8e3;
+  --focus: #824400;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17252d;
+    --shell: #243b44;
+    --ink: #e9f0ed;
+    --muted: #c3d1d0;
+    --heading: #eef3ed;
+    --accent: #8dd8ce;
+    --line: #78929a;
+    --panel: #293d49;
+    --focus: #ffd27a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-inline-size: 48rem;
+  margin-block: 0;
+  margin-inline: auto;
+  padding-block: 2.5rem 4rem;
+  padding-inline: 1.25rem;
+  background: var(--shell);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+a:visited {
+  color: var(--heading);
+  text-decoration-style: double;
+}
+
+a.active {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+label:has(input:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 1000;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  transform: translateY(-160%);
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  background: var(--panel);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.eyebrow,
+.meta,
+.step-number {
+  color: var(--muted);
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.eyebrow a.active {
+  color: var(--muted);
+}
+
+.meta,
+.step-number {
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-block-start: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--heading);
+}
+
+header,
+.callout {
+  border-radius: 0.55rem;
+  background: var(--panel);
+}
+
+header {
+  padding-block: 1.25rem;
+  padding-inline: 1.25rem;
+}
+
+h1 {
+  max-inline-size: 13ch;
+  margin-block-end: 0.6rem;
+  font-size: clamp(2.3rem, 8vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+}
+
+h2 {
+  margin-block-end: 0.55rem;
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h3 {
+  margin-block-end: 0.3rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.98rem;
+}
+
+.lede {
+  max-inline-size: 39rem;
+  color: var(--muted);
+  font-size: 1.18rem;
+}
+
+main {
+  padding-block-start: 1.25rem;
+}
+
+section {
+  margin-block: 1.25rem;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+}
+
+.steps {
+  display: grid;
+  gap: 1rem;
+  padding-inline-start: 0;
+  list-style: none;
+  counter-reset: lesson-step;
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  counter-increment: lesson-step;
+  border-block-end: 1px solid var(--line);
+  padding-block-end: 0.75rem;
+}
+
+.steps li::before {
+  content: counter(lesson-step, decimal-leading-zero);
+  display: grid;
+  inline-size: 2rem;
+  block-size: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #174f8a;
+  color: #ffffff;
+  font-family: system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.steps p {
+  margin-block-end: 0;
+}
+
+.callout {
+  padding-block: 1rem;
+  padding-inline: 1.1rem;
+}
+
+.callout p:last-child {
+  margin-block-end: 0;
+}
+
+.resources {
+  padding-inline-start: 1.2rem;
+}
+
+footer {
+  margin-block-start: 2.5rem;
+  border-block-start: 1px solid var(--line);
+  padding-block-start: 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 34rem) {
+  body {
+    padding-block-start: 1.5rem;
+  }
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    --paper: #ffffff;
+    --shell: #ffffff;
+    --ink: #253756;
+    --muted: #40536e;
+    --heading: #39496c;
+    --accent: #174f8a;
+    --line: #5c7583;
+    --panel: #ffffff;
+    --focus: #824400;
+  }
+
+  body {
+    max-inline-size: none;
+    padding-block: 0;
+    padding-inline: 0;
+    font-size: 11pt;
+  }
+
+  header,
+  .callout {
+    background: #ffffff;
+  }
+
+  .steps li::before {
+    background: #ffffff;
+    color: #253756;
+  }
+
+  .skip-link {
+    display: none;
+  }
+
+  a {
+    color: inherit;
+  }
+}

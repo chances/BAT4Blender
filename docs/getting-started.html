@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Getting Started - BAT4Blender Docs</title>
+    <link rel="stylesheet" href="./lesson.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+      <p class="eyebrow">
+        <span>BAT4Blender</span>
+        ·
+        <a href="./index.html">Documentation</a>
+      </p>
+      <h1>Getting Started</h1>
+      <p class="lede">Prepare a Blender scene, preview a view, and export a SimCity 4 BAT.</p>
+    </header>
+    <nav aria-label="Table of Contents">
+      <h2 id="contents-title">Contents</h2>
+      <ol>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prepare-scene">Prepare the Scene</a></li>
+        <li><a href="#preview">Preview a View</a></li>
+        <li><a href="#render-export">Render and Export</a></li>
+        <li><a href="#day-night">Day and Night Output</a></li>
+        <li><a href="#optional-tools">Optional Tools</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ol>
+    </nav>
+    <main id="main-content">
+      <section id="requirements" aria-labelledby="requirements-title">
+        <h2 id="requirements-title">Requirements</h2>
+        <ul>
+          <li>Blender 3.6, 4.2+, or 5.0+.</li>
+          <li>Cycles for rendering.</li>
+          <li><a href="https://imagemagick.org">ImageMagick</a> for Super-Sampling, which is enabled by default.</li>
+          <li><a href="https://github.com/memo33/fshgen/releases/latest"><code>fshgen</code></a> for optional SC4Model post-processing.</li>
+        </ul>
+      </section>
+      <section id="installation" aria-labelledby="installation-title">
+        <h2 id="installation-title">Installation</h2>
+        <ol class="steps">
+          <li><article><h3>Download the Add-on</h3><p>Get the latest BAT4Blender ZIP from the <a href="https://github.com/memo33/BAT4Blender/releases">release page</a>.</p></article></li>
+          <li><article><h3>Install the ZIP in Blender</h3><p>Open <em>Edit → Preferences → Add-ons</em>, choose <em>Install from Disk</em>, and select the ZIP.</p></article></li>
+          <li><article><h3>Open the BAT4Blender Panel</h3><p>Find it under <em>Properties → Scene → BAT4Blender</em>.</p></article></li>
+        </ol>
+      </section>
+      <section id="prepare-scene" aria-labelledby="prepare-title">
+        <h2 id="prepare-title">Prepare the Scene</h2>
+        <ol class="steps">
+          <li><article><h3>Save the Blender File</h3><p>BAT4Blender writes output beside the saved <code>.blend</code> file. Save before rendering to choose the output folder.</p></article></li>
+          <li><article><h3>Set the Render Engine</h3><p>Choose <em>Cycles</em> under <em>Properties → Render → Render Engine</em>. The World setup also switches EEVEE to Cycles.</p></article></li>
+          <li><article><h3>Check Output Dimensions</h3><p>In <em>Output Properties</em>, set Resolution Scale to 100% and Pixel Aspect to 1:1.</p></article></li>
+          <li><article><h3>Load the World and Compositor</h3><p>Click <em>World</em>, then <em>Compositing</em> in the BAT4Blender panel. Run World first because the compositor setup uses its light group.</p></article></li>
+          <li><article><h3>Create and Fit LODs</h3><p>Click <em>Add</em> to create missing Level of Detail (LOD) meshes. BAT4Blender fits them to the bounds of render-visible mesh objects. After changing the model, select a zoom and click <em>Fit Z…</em> to refit that LOD.</p></article></li>
+        </ol>
+        <p>The <em>Camera</em> button positions the camera for viewport inspection. BAT4Blender positions it automatically during preview and export.</p>
+      </section>
+      <section id="preview" aria-labelledby="preview-title">
+        <h2 id="preview-title">Preview a View</h2>
+        <ol class="steps">
+          <li><article><h3>Select the View</h3><p>Choose a Zoom, Rotation, and Day/Night mode in the BAT4Blender panel.</p></article></li>
+          <li><article><h3>Render the Preview</h3><p>Click <em>Preview</em> to render the selected view.</p></article></li>
+          <li><article><h3>Inspect the Composite</h3><p>In the Render Result, select <em>Composite</em> rather than <em>View Layer</em>. The composite shows the add-on's lighting and post-processing.</p></article></li>
+        </ol>
+      </section>
+      <section id="render-export" aria-labelledby="render-export-title">
+        <h2 id="render-export-title">Render and Export</h2>
+        <p>Choose the output modes from the Day/Night menu, then click <em>Render all zooms &amp; rotations</em>. The default Day-only selection renders 20 views across five zoom levels and four rotations.</p>
+        <p>Press <kbd>Esc</kbd> to cancel a running batch.</p>
+        <h3>Generated Files</h3>
+        <ul>
+          <li><code>.obj</code> files contain exported LOD geometry.</li>
+          <li><code>.png</code> files contain rendered model views.</li>
+          <li><code>.xml</code> contains the <code>SC4PLUGINDESC</code> descriptor and remains separate from the SC4Model file.</li>
+          <li><code>.SC4Model</code> is created when Post-Processing is enabled and <code>fshgen</code> is configured.</li>
+        </ul>
+      </section>
+      <section id="day-night" aria-labelledby="day-night-title">
+        <h2 id="day-night-title">Day and Night Output</h2>
+        <p>The Day/Night menu selects which lighting modes the batch renders. Day only is the default. Maxis Night (MN) and Dark Night (DN) can be added to a day render or rendered separately.</p>
+        <p>Post-Processing requires a Day render. MN-only and DN-only batches cannot create an SC4Model.</p>
+        <p>To control object visibility, place objects in collections named <code>Day</code> or <code>Night</code>. BAT4Blender enables the matching collections for each render mode.</p>
+      </section>
+      <section id="optional-tools" aria-labelledby="optional-tools-title">
+        <h2 id="optional-tools-title">Optional Tools</h2>
+        <article>
+          <h3>Super-Sampling</h3>
+          <p>Super-Sampling is enabled by default. It renders at 2× resolution and downsamples the result. Install ImageMagick and set its executable in BAT4Blender preferences, or disable Super-Sampling.</p>
+        </article>
+        <article>
+          <h3>Post-Processing</h3>
+          <p>Post-Processing is disabled by default. Install <a href="https://github.com/memo33/fshgen/releases"><code>fshgen</code></a> and set its executable in BAT4Blender preferences to create an SC4Model. BAT4Blender removes the intermediate OBJ and PNG files after conversion.</p>
+        </article>
+      </section>
+      <section id="troubleshooting" aria-labelledby="troubleshooting-title">
+        <h2 id="troubleshooting-title">Troubleshooting</h2>
+        <dl>
+          <dt>The renderer reports an unsupported resolution scale or pixel aspect.</dt>
+          <dd>Set Resolution Scale to 100% and Pixel Aspect to 1:1 in Output Properties.</dd>
+          <dt>The preview does not show night lighting or compositor effects.</dt>
+          <dd>Choose <em>Composite</em> in the Render Result.</dd>
+          <dt>Super-Sampling or SC4Model conversion fails.</dt>
+          <dd>Set the ImageMagick or <code>fshgen</code> executable path in BAT4Blender preferences. Disable the corresponding option to continue without that tool.</dd>
+          <dt>The output files are not where expected.</dt>
+          <dd>Save the <code>.blend</code> file first. BAT4Blender writes output beside it.</dd>
+        </dl>
+      </section>
+      <footer>
+        <p>Use the <a href="reference/cheatsheet.html">BAT4Blender cheatsheet</a> as a pre-render checklist. See the <a href="README.md">documentation index</a> for other project documentation.</p>
+      </footer>
+    </main>
+  </body>
+</html>
